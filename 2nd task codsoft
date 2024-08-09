@@ -1,0 +1,74 @@
+import java.util.Scanner;
+public class Gradecalc{
+    public static void main(String[] args) {
+Scanner input=new Scanner(System.in);
+System.out.println("Enter how many subjet you need to insert  ");
+int num =input.nextInt();
+double []subjects  =new double [num];
+        double x ;
+        for (int i = 0; i < num; i++) {
+            System.out.println("Enter grade of subject "+(i+1)+":");
+            x = input.nextDouble();
+              subjects[i]=CheckGrade(x);
+        }
+        sumGrades(subjects);
+        average(subjects);
+        CGrades(subjects);
+
+
+    }
+    public static double CheckGrade(double Grade) {
+        Scanner input = new Scanner(System.in);
+        double x ;
+        if (Grade > 100.0 || Grade < 0.0) {
+            System.out.println("subject should be between 0 and 100");
+            System.out.println("enter the grade again");
+            x = input.nextDouble();
+            return CheckGrade(x);
+
+            }
+
+    return Grade;
+
+    }
+public static void sumGrades(double subjects[]){
+        double sum=0.0;
+    for (int i = 0; i < subjects.length; i++) {
+        sum+=subjects[i];
+    }
+    int y=((subjects.length)*100);
+    System.out.println("total grade are"+sum+"/"+y);
+
+}
+public static void average(double subjects[]){
+    double sum=0.0;
+    for (int i = 0; i < subjects.length; i++) {
+        sum+=subjects[i];
+    }
+    int y=((subjects.length)*100);
+    double Ap=(sum/y)*100;
+    System.out.println("your percentage is :"+Ap+"%");
+    }
+    public static void  CGrades(double subjects[]){
+        String [] Grades = new String[subjects.length];
+        for (int i = 0; i < subjects.length; i++) {
+            if(subjects[i]>=90){
+                Grades[i] = "A";
+            } else if (subjects[i]>=80) {
+                Grades[i] = "B";
+
+            } else if (subjects[i]>=70) {
+                Grades[i] = "C";
+
+            } else if (subjects[i]>=50) {
+                Grades[i] = "D";
+            } else if (subjects[i]<50 ) {
+                Grades[i] = "F";
+
+            }
+            System.out.println("subject"+(i+1)+":"+Grades[i]);
+
+        }
+
+    }
+}
